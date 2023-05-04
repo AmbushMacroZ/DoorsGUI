@@ -2,13 +2,13 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local Window = OrionLib:MakeWindow({IntroText = "Doors GUI v1.2",Name = "Doors - By Стич#6687", HidePremium = false, SaveConfig = true, ConfigFolder = "DoorsSex"})
 if game.PlaceId == 6516141723 then
     OrionLib:MakeNotification({
-        Name = "Error",
-        Content = "Please execute when in game, not in lobby.",
-        Time = 2
+        Name = "Ошибка",
+        Content = "Невозможно использовать в лобби, зайдите в игру.",
+        Time = 3
     })
 end
 local VisualsTab = Window:MakeTab({
-	Name = "Visuals",
+	Name = "ESP",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -18,7 +18,7 @@ local ChaseStart = game:GetService("ReplicatedStorage").GameData.ChaseStart
 
 local KeyChams = {}
 VisualsTab:AddToggle({
-	Name = "Key Chams",
+	Name = "ESP Ключей",
 	Default = false,
     Flag = "KeyToggle",
     Save = true,
@@ -59,7 +59,7 @@ coroutine.resume(KeyCoroutine)
 
 local BookChams = {}
 VisualsTab:AddToggle({
-	Name = "Book Chams",
+	Name = "ESP Книг",
 	Default = false,
     Flag = "BookToggle",
     Save = true,
@@ -72,7 +72,7 @@ VisualsTab:AddToggle({
 
 local FigureChams = {}
 VisualsTab:AddToggle({
-	Name = "Figure Chams",
+	Name = "ESP Фигуры",
 	Default = false,
     Flag = "FigureToggle",
     Save = true,
@@ -129,27 +129,14 @@ end)
 
 
 local GameTab = Window:MakeTab({
-	Name = "Game",
+	Name = "Функции",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 local CharTab = Window:MakeTab({
-	Name = "Character",
+	Name = "Передвижение",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
-})
-
-local TargetWalkspeed
-CharTab:AddSlider({
-	Name = "Speed",
-	Min = 0,
-	Max = 50,
-	Default = 5,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	Callback = function(Value)
-		TargetWalkspeed = Value
-	end    
 })
 
 local pcl = Instance.new("SpotLight")
@@ -161,7 +148,7 @@ pcl.Enabled = false
 
 
 CharTab:AddToggle({
-	Name = "Headlight",
+	Name = "Голова-фонарь",
 	Default = false,
     Callback = function(Value)
         pcl.Enabled = Value
@@ -169,20 +156,20 @@ CharTab:AddToggle({
 })
 
 GameTab:AddToggle({
-	Name = "No seek arms/obstructions",
+	Name = "Нет сика и его рук.",
 	Default = false,
     Flag = "NoSeek",
     Save = true
 })
 
 GameTab:AddToggle({
-	Name = "Instant Interact",
+	Name = "Мгновенное взаимодействие.",
 	Default = false,
     Flag = "InstantToggle",
     Save = true
 })
 GameTab:AddButton({
-	Name = "Skip level",
+	Name = "Пропустить комнату. (BETA)",
 	Callback = function()
         pcall(function()
             local HasKey = false
@@ -211,7 +198,7 @@ GameTab:AddButton({
 })
 
 GameTab:AddToggle({
-	Name = "Auto skip level",
+	Name = "Автоматический пропуск комнат. (BETA)",
 	Default = false,
     Save = false,
     Flag = "AutoSkip"
@@ -259,27 +246,27 @@ GameTab:AddButton({
   	end    
 })
 GameTab:AddToggle({
-	Name = "Avoid Rush/Ambush",
+	Name = "Спасение от Раша/Амбуша",
 	Default = false,
     Flag = "AvoidRushToggle",
     Save = true
 })
 GameTab:AddToggle({
-	Name = "No Screech",
+	Name = "Удалить скрича",
 	Default = false,
     Flag = "ScreechToggle",
     Save = true
 })
 
 GameTab:AddToggle({
-	Name = "Always win heartbeat",
+	Name = "Всегда выигрывать мини-игру с фигрой. (Сердце-биение)",
 	Default = false,
     Flag = "HeartbeatWin",
     Save = true
 })
 
 GameTab:AddToggle({
-	Name = "Predict chases",
+	Name = "Предсказание событий",
 	Default = false,
     Flag = "PredictToggle" ,
     Save = true
@@ -303,7 +290,7 @@ GameTab:AddButton({
         game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
   	end    
 })
-GameTab:AddParagraph("Warning","You may need to open/close the panel a few times for this to work, fixing soon.")
+GameTab:AddParagraph("Автор скрипта: Absolute Scripts, все права защищены® FEKSADO-5386913")
 
 --// ok actual code starts here
 
@@ -359,8 +346,8 @@ local NotificationCoroutine = coroutine.create(function()
             local n = ChaseStart.Value - LatestRoom.Value
             if 0 < n and n < 4 then
                 OrionLib:MakeNotification({
-                    Name = "Warning!",
-                    Content = "Event in " .. tostring(n) .. " rooms.",
+                    Name = "Внимание!",
+                    Content = "Событие через: " .. tostring(n) .. " комнату(ы).",
                     Time = 5
                 })
             end
@@ -380,9 +367,9 @@ local NotificationCoroutine = coroutine.create(function()
         if inst.Name == "RushMoving" and OrionLib.Flags["MobToggle"].Value == true then
             if OrionLib.Flags["AvoidRushToggle"].Value == true then
                 OrionLib:MakeNotification({
-                    Name = "Warning!",
-                    Content = "Avoiding Rush. Please wait.",
-                    Time = 5
+                    Name = "Внимание!",
+                    Content = "Вы спрятаны от Раша.",
+                    Time = 2
                 })
                 local OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
                 local con = game:GetService("RunService").Heartbeat:Connect(function()
@@ -395,17 +382,17 @@ local NotificationCoroutine = coroutine.create(function()
                 game.Players.LocalPlayer.Character:MoveTo(OldPos)
             else
                 OrionLib:MakeNotification({
-                    Name = "Warning!",
-                    Content = "Rush has spawned, hide!",
+                    Name = "Внимание!",
+                    Content = "Раш проявился, прячься!",
                     Time = 5
                 })
             end
         elseif inst.Name == "AmbushMoving" and OrionLib.Flags["MobToggle"].Value == true then
             if OrionLib.Flags["AvoidRushToggle"].Value == true then
                 OrionLib:MakeNotification({
-                    Name = "Warning!",
-                    Content = "Avoiding Ambush. Please wait.",
-                    Time = 5
+                    Name = "Внимание!",
+                    Content = "Вы спрятаны от Амбуша.",
+                    Time = 2
                 })
                 local OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
                 local con = game:GetService("RunService").Heartbeat:Connect(function()
@@ -418,8 +405,8 @@ local NotificationCoroutine = coroutine.create(function()
                 game.Players.LocalPlayer.Character:MoveTo(OldPos)
             else
                 OrionLib:MakeNotification({
-                    Name = "Warning!",
-                    Content = "Ambush has spawned, hide!",
+                    Name = "Внимание!",
+                    Content = "Амбуш появился, прячься!",
                     Time = 5
                 })
             end
@@ -430,12 +417,12 @@ end)
 --// ok actual code ends here
 
 local CreditsTab = Window:MakeTab({
-	Name = "Credits",
+	Name = "Информация",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
-CreditsTab:AddParagraph("Credits to","OminousVibes - (Got most of the ideas from their thread, check it out! - https://v3rmillion.net/showthread.php?tid=1184088)")
+GameTab:AddParagraph("Автор скрипта: Absolute Scripts, все права защищены® FEKSADO-5386913")
 
 coroutine.resume(NotificationCoroutine)
 
