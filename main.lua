@@ -1,14 +1,14 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({IntroText = "Doors GUI v1.0",Name = "Doors - Стич#6687", HidePremium = false, SaveConfig = true, ConfigFolder = "DoorsSex"})
+local Window = OrionLib:MakeWindow({IntroText = "Doors GUI v1.2",Name = "Doors - By sashaaaaa#5351", HidePremium = false, SaveConfig = true, ConfigFolder = "DoorsSex"})
 if game.PlaceId == 6516141723 then
     OrionLib:MakeNotification({
-        Name = "Error!",
-        Content = "Используйте скрипт в игре, в лобби ненужно.",
+        Name = "Error",
+        Content = "Please execute when in game, not in lobby.",
         Time = 2
     })
 end
 local VisualsTab = Window:MakeTab({
-	Name = "ESP",
+	Name = "Visuals",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -18,7 +18,7 @@ local ChaseStart = game:GetService("ReplicatedStorage").GameData.ChaseStart
 
 local KeyChams = {}
 VisualsTab:AddToggle({
-	Name = "ESP Ключей",
+	Name = "Key Chams",
 	Default = false,
     Flag = "KeyToggle",
     Save = true,
@@ -59,7 +59,7 @@ coroutine.resume(KeyCoroutine)
 
 local BookChams = {}
 VisualsTab:AddToggle({
-	Name = "ESP Книг",
+	Name = "Book Chams",
 	Default = false,
     Flag = "BookToggle",
     Save = true,
@@ -72,7 +72,7 @@ VisualsTab:AddToggle({
 
 local FigureChams = {}
 VisualsTab:AddToggle({
-	Name = "ESP Фигуры",
+	Name = "Figure Chams",
 	Default = false,
     Flag = "FigureToggle",
     Save = true,
@@ -139,6 +139,18 @@ local CharTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
+local TargetWalkspeed
+CharTab:AddSlider({
+	Name = "Speed",
+	Min = 0,
+	Max = 50,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	Callback = function(Value)
+		TargetWalkspeed = Value
+	end    
+})
 
 local pcl = Instance.new("SpotLight")
 pcl.Brightness = 1
@@ -149,7 +161,7 @@ pcl.Enabled = false
 
 
 CharTab:AddToggle({
-	Name = "Голова-фонарь",
+	Name = "Headlight",
 	Default = false,
     Callback = function(Value)
         pcl.Enabled = Value
@@ -157,20 +169,20 @@ CharTab:AddToggle({
 })
 
 GameTab:AddToggle({
-	Name = "Удалить  Сика",
+	Name = "No seek arms/obstructions",
 	Default = false,
     Flag = "NoSeek",
     Save = true
 })
 
 GameTab:AddToggle({
-	Name = "Быстрое взаймодействие",
+	Name = "Instant Interact",
 	Default = false,
     Flag = "InstantToggle",
     Save = true
 })
 GameTab:AddButton({
-	Name = " Пропустить уровень(бета)",
+	Name = "Skip level",
 	Callback = function()
         pcall(function()
             local HasKey = false
@@ -199,7 +211,7 @@ GameTab:AddButton({
 })
 
 GameTab:AddToggle({
-	Name = "Авто-пропуск уровня(бета)",
+	Name = "Auto skip level",
 	Default = false,
     Save = false,
     Flag = "AutoSkip"
@@ -247,45 +259,45 @@ GameTab:AddButton({
   	end    
 })
 GameTab:AddToggle({
-	Name = "Авто-спасение от Раша/Амбуша",
+	Name = "Avoid Rush/Ambush",
 	Default = false,
     Flag = "AvoidRushToggle",
     Save = true
 })
 GameTab:AddToggle({
-	Name = " Удалить скрича.",
+	Name = "No Screech",
 	Default = false,
     Flag = "ScreechToggle",
     Save = true
 })
 
 GameTab:AddToggle({
-	Name = "Всегда побеждать в мини-игре с фигурой(сердцебиение)",
+	Name = "Always win heartbeat",
 	Default = false,
     Flag = "HeartbeatWin",
     Save = true
 })
 
 GameTab:AddToggle({
-	Name = "Предсказывать погони",
+	Name = "Predict chases",
 	Default = false,
     Flag = "PredictToggle" ,
     Save = true
 })
 GameTab:AddToggle({
-	Name = "Предупреждение о появлении существа",
+	Name = "Notify when mob spawns",
 	Default = false,
     Flag = "MobToggle" ,
     Save = true
 })
 GameTab:AddButton({
-	Name = "Полная мини-игра breaker box",
+	Name = "Complete breaker box minigame",
 	Callback = function()
         game:GetService("ReplicatedStorage").Bricks.EBF:FireServer()
   	end    
 })
 GameTab:AddButton({
-	Name = "Пропустить уровень 50(бета)",
+	Name = "Skip level 50",
 	Callback = function()
         local CurrentDoor = workspace.CurrentRooms[tostring(LatestRoom+1)]:WaitForChild("Door")
         game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
@@ -348,7 +360,7 @@ local NotificationCoroutine = coroutine.create(function()
             if 0 < n and n < 4 then
                 OrionLib:MakeNotification({
                     Name = "Warning!",
-                    Content = "Событее произойдет через: " .. tostring(n) .. " комнаты.",
+                    Content = "Event in " .. tostring(n) .. " rooms.",
                     Time = 5
                 })
             end
@@ -369,7 +381,7 @@ local NotificationCoroutine = coroutine.create(function()
             if OrionLib.Flags["AvoidRushToggle"].Value == true then
                 OrionLib:MakeNotification({
                     Name = "Warning!",
-                    Content = "Вы были спрятаны от Раша! Пожайлуста подождите",
+                    Content = "Avoiding Rush. Please wait.",
                     Time = 5
                 })
                 local OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
@@ -384,7 +396,7 @@ local NotificationCoroutine = coroutine.create(function()
             else
                 OrionLib:MakeNotification({
                     Name = "Warning!",
-                    Content = "Раш появился! Прячься!",
+                    Content = "Rush has spawned, hide!",
                     Time = 5
                 })
             end
@@ -392,7 +404,7 @@ local NotificationCoroutine = coroutine.create(function()
             if OrionLib.Flags["AvoidRushToggle"].Value == true then
                 OrionLib:MakeNotification({
                     Name = "Warning!",
-                    Content = Вы были спрятаны от Амбуша! Пожайлуста подождите...",
+                    Content = "Avoiding Ambush. Please wait.",
                     Time = 5
                 })
                 local OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
@@ -407,7 +419,7 @@ local NotificationCoroutine = coroutine.create(function()
             else
                 OrionLib:MakeNotification({
                     Name = "Warning!",
-                    Content = "Амбуш появился! Прячься!",
+                    Content = "Ambush has spawned, hide!",
                     Time = 5
                 })
             end
