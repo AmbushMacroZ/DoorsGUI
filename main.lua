@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({IntroText = "Doors GUI v1.2",Name = "Doors - By sashaaaaa#5351", HidePremium = false, SaveConfig = true, ConfigFolder = "DoorsSex"})
+local Window = OrionLib:MakeWindow({IntroText = "Doors GUI v1.2",Name = "Doors - By Стич#6687", HidePremium = false, SaveConfig = true, ConfigFolder = "DoorsSex"})
 if game.PlaceId == 6516141723 then
     OrionLib:MakeNotification({
         Name = "Error",
