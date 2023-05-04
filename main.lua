@@ -391,18 +391,13 @@ local NotificationCoroutine = coroutine.create(function()
             if OrionLib.Flags["AvoidRushToggle"].Value == true then
                 OrionLib:MakeNotification({
                     Name = "Внимание!",
-                    Content = "Вы спрятаны от Амбуша.",
+                    Content = "Амбуш появился, прячься!",
                     Time = 2
                 })
-                local OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-                local con = game:GetService("RunService").Heartbeat:Connect(function()
-                    game.Players.LocalPlayer.Character:MoveTo(OldPos + Vector3.new(0,20,0))
-                end)
                 
                 inst.Destroying:Wait()
                 con:Disconnect()
                 
-                game.Players.LocalPlayer.Character:MoveTo(OldPos)
             else
                 OrionLib:MakeNotification({
                     Name = "Внимание!",
