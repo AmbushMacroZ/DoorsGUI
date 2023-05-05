@@ -28,8 +28,11 @@ ___
 #### Version list:
 #### Not relevant:negative_squared_cross_mark::
 > 1.1
+>
 > 1.3
+>
 > 1.5
+>
 > 1.6
 #### Actual:white_check_mark::
 ```
