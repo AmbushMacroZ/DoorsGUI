@@ -290,7 +290,7 @@ GameTab:AddButton({
         game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
   	end    
 })
-GameTab:AddParagraph("Спрятаться от Раша: передалано(так как ложное срабатывание может запопоть вам игру функия была переделана: с Спрятаться от Раша/Амбуша на Спрятаться от раша.)")
+GameTab:AddParagraph("Спрятаться от Раша:\n передалано(так как ложное срабатывание может\n запороть вам игру функия была переделана:\n с Спрятаться от Раша/Амбуша на Спрятаться от раша.)")
 
 --// ok actual code starts here
 
