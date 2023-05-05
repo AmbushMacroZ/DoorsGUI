@@ -40,6 +40,6 @@ ___
 ___
 ##### Code language:
 
-Lua - 102%
+Lua - 95%
 
-Other - 96%
+Other - 5%
