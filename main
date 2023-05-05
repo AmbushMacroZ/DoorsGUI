@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/CTICHARA/DoorsGUI/main/library')))()
-local Window = OrionLib:MakeWindow({IntroText = "DoorsGUI v1.7",Name = "Doors - By Стич#6687", HidePremium = false, SaveConfig = true, ConfigFolder = "DoorsSex"})
+local Window = OrionLib:MakeWindow({IntroText = "DoorsGUI v1.9",Name = "Doors - By Стич#6687", HidePremium = false, SaveConfig = true, ConfigFolder = "DoorsSex"})
 if game.PlaceId == 6516141723 then
     OrionLib:MakeNotification({
         Name = "Ошибка",
@@ -373,7 +373,7 @@ local NotificationCoroutine = coroutine.create(function()
                 })
                 local OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
                 local con = game:GetService("RunService").Heartbeat:Connect(function()
-                    game.Players.LocalPlayer.Character:MoveTo(OldPos + Vector3.new(0,20,0))
+                    game.Players.LocalPlayer.Character:MoveTo(OldPos + Vector3.new(0,40,0))
                 end)
                 
                 inst.Destroying:Wait()
