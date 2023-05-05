@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/CTICHARA/DoorsGUI/main/library')))()
-local Window = OrionLib:MakeWindow({IntroText = "Doors GUI v1.7",Name = "Doors - By Стич#6687", HidePremium = false, SaveConfig = true, ConfigFolder = "DoorsSex"})
+local Window = OrionLib:MakeWindow({IntroText = "DoorsGUI v1.7",Name = "Doors - By Стич#6687", HidePremium = false, SaveConfig = true, ConfigFolder = "DoorsSex"})
 if game.PlaceId == 6516141723 then
     OrionLib:MakeNotification({
         Name = "Ошибка",
@@ -246,7 +246,7 @@ GameTab:AddButton({
   	end    
 })
 GameTab:AddToggle({
-	Name = "Спасение от Раша/Амбуша",
+	Name = "Спасение от Раша",
 	Default = false,
     Flag = "AvoidRushToggle",
     Save = true
@@ -290,7 +290,7 @@ GameTab:AddButton({
         game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
   	end    
 })
-GameTab:AddParagraph("Автор скрипта: Absolute Scripts, все права защищены®")
+GameTab:AddParagraph("Спрятаться от Раша: передалано(так как ложное срабатывание может запопоть вам игру функия была переделана: с Спрятаться от Раша/Амбуша на Спрятаться от раша.)")
 
 --// ok actual code starts here
 
