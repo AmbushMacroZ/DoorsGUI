@@ -35,9 +35,9 @@ ___
 >
 > 1.6
 #### Actual:white_check_mark::
-```
-1.7
-```
+
+>1.7
+
 ___
 ##### Code language:
 
