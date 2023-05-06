@@ -1,84 +1,21 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-    <title>
-      DDoS Protect
-    </title>
-  <style>
-    div {
-      background: #16AFF3;
-      color: #0000ff;
-      padding: 10px;
-      border-radius: 25px;
-    }
-  </style>
-</head>
-<body bgcolor="#0000ff">
-  <center>
-    <h1>
-      <font color="white">
-        DDoS Protect by Absolute Scripts
-      </font>
-    </h1>
-  </center>
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Document</title> 
+</head> 
+<body> 
+   <p>Текст: 1</p>
 
-
-  <center>
-    <img src="img/DDoSPTC.png" alt="" bgcolor="#4E5754"></img>
-  </center>
-
-<!-- 
-  <script type="text/javascript">
-    function moveTo() {
-      location.href = "https://ya.ru/"; /* ссылка на новую страницу */
-    }
-      window.onload=setTimeout('moveTo()', 10000); /* время задержки (в милисекундах) */
-  </script> -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h4>
-  <center>
-    <div>
-      <font size="20">
-        😉DDoS Protect by AbsoluteScripts🤑
-      </font>
-    </div>
-  </center>
-</h4>
-</body>
+   <script>
+      if (localStorage.getItem('counter')) {
+          let counter = Number(counter) + 1;
+          let text = `Текст: ${counter}`;
+          document.querySelector('p').innerHTML = text;
+      } else {
+          localStorage.setItem('counter', 1);
+      }
+   </script>
+</body> 
 </html>
