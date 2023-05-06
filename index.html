@@ -5,7 +5,6 @@
     <title>
       DDoS Protect
     </title>
-<!--
   <style>
     div {
       background: #16AFF3;
@@ -14,7 +13,6 @@
       border-radius: 15px;
     }
   </style>
--->
 </head>
 <body bgcolor="#0000ff">
   <center>
@@ -31,12 +29,10 @@
   </center>
 
   <script type="text/javascript">
-        var facts = ['😍', '😘', '😎', '😝', '😜', '🤑', '🤡', '😉'];
-
-        !function newFact() {
-          var randomFact = Math.floor(Math.random() * facts.length);
-          document.getElementById('factDisplay').innerHTML = facts[randomFact]
-        }();
+  function moveTo() {
+    location.href = "https://yandex.ru/"; /* ссылка на новую страницу */
+  }
+    window.onload=setTimeout('moveTo()', 10000); /* время задержки (в милисекундах) */
   </script>
 <br>
 <br>
@@ -76,8 +72,9 @@
 <br>
 <h4>
   <center>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <div id="factDisplay"></div>
+    <div>
+      😉DDoS Protect by AbsoluteScripts🤑
+    </div>
   </center>
 </h4>
 </body>
